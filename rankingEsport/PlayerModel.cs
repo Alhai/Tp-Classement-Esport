@@ -8,7 +8,6 @@ namespace rankingEsport
 		public string Pseudo { get; set; }
 		public string Team { get; set; }
 		public int Statistic { get; set; }
-
 	}
 }
 
