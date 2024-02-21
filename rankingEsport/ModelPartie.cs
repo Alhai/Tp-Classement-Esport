@@ -1,13 +1,18 @@
 ﻿using System;
 
-public class ModelGames
+namespace rankingEspor
 {
-	public ModelGames()
+	public class ModelGames
 	{
-		public int id {  get; set; },
-		public string name { get; set; },
-		public string members { get; set; },
-	    public int statisticTeams { get; set; }
+		public ModelGames()
+		{
+			public int id {  get; set; },
+			public string name { get; set; },
+			public string members { get; set; },
+			public int statisticTeams { get; set; }
 
+		}
 	}
+
 }
+
