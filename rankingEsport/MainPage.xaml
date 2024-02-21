@@ -25,33 +25,40 @@
 					<RowDefinition Height ="*" />
 					<RowDefinition Height ="*" />
 				</Grid.RowDefinitions>
-				<Label Background="Blue"
+				<Label Background="White"
                        Text="ID"
                        />
-				<Label Background="Red"
+            <Label Background="White"
                        Grid.Column="1"
                        Text="NOM"
                        />
-				<Label Background="Green"
+            <Label Background="White"
                        Grid.Column="2"
                        Text="PSEUDO"/>
-				<Label Background="Orange"
+            <Label Background="White"
                        Grid.Column="3"
                        Text="équipe
                        "/>
-				<Label Background="Blue"
+            <Label Background="White"
 						   Grid.Column="4"
 					   Text="Stat"/>
-				<Label Background="LightBlue"
+            <Label Background="White"
 						   Grid.Column="5"
 					   Text="Modifier"/>
-				<Label Background="Blue"
+            <Label Background="White"
 					   Grid.Column="6"
 					   Text="Supprimmer"/>
 				<Button BackgroundColor="Beige"
-						Grid.Column="6"
+						Grid.Column="5"
 						WidthRequest="100"
-						HeightRequest="50"/>
+						HeightRequest="50"
+                        Text="Modifier"/>
+				<Button BackgroundColor="Red"
+                        Grid.Column="6"
+						WidthRequest="80"
+						HeightRequest="50"
+						Text="Supprimmer"
+                        />
         </Grid>
     </ScrollView>
 
