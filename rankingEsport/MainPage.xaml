@@ -13,11 +13,11 @@
             <Entry Text="{Binding Name}" />
 
             <Label Text="Pseudo :" HorizontalOptions="Start" />
-            <Entry Text="{Binding Name}" />
+            <Entry Text="{Binding Pseudo}" />
 
 
             <Label Text="Equipe :" HorizontalOptions="Start" />
-            <Picker x:Name="pickerRobotType" Title="Type de robot :" ItemsSource="{Binding Types}" SelectedItem="{Binding RobotType}">
+            <Picker x:Name="pickerPlayerTeam" Title="Type de robot :" ItemsSource="{Binding Team}" SelectedItem="{Binding Team}">
             </Picker>
 
             <Button x:Name="DrawCircleButton" Text="Ajouter" > </Button>
