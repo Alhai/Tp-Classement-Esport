@@ -1,13 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"   
              x:Class="rankingEsport.MainPage">
-
     <ScrollView>
-        <VerticalStackLayout>
+        <!--<VerticalStackLayout>
+              <telerik:RadDataGrid x:Name="dataGrid">
+
+        </VerticalStackLayout>-->
+        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start">
+            <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
+
+            <Label Text="Formulaire de création de Joueur"  FontSize="Large" HorizontalOptions="Start" />
+            <!--<Entry x:Name="entryRobotName" Text="{Binding Name}" />-->
+
+            <Label Text="Nom du Joueur :" HorizontalOptions="Start" />
+            <Entry Text="{Binding Name}" />
+
+            <Label Text="Pseudo :" HorizontalOptions="Start" />
+            <Entry Text="{Binding Name}" />
+
+
+            <Label Text="Equipe :" HorizontalOptions="Start" />
+            <Picker x:Name="pickerRobotType" Title="Type de robot :" ItemsSource="{Binding Types}" SelectedItem="{Binding RobotType}">
+            </Picker>
+
+            <Button x:Name="DrawCircleButton" 
+            Text="Ajouter" >  
+                </Button>
+          
 
         </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
 
+    
