@@ -21,6 +21,45 @@
             <Picker x:Name="pickerPlayerTeam" Title="Nom d'équipe:" ItemsSource="{Binding Teams}" SelectedItem="{Binding Team}">
             </Picker>
             <Button x:Name="DrawCircleButton" Text="Ajouter" Command="{Binding AddPlayerCommand}" />
+                <ListView x:Name="listViewPlayers" ItemsSource="{Binding Players}">
+    <ListView.Header>
+        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="5">
+            <Label Text="Id" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Nom" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Pseudo" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Equipe" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Statistiques" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Modifier" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Supprimer" HorizontalOptions="StartAndExpand" TextColor="Black" />
+        </StackLayout>
+    </ListView.Header>
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <Grid Padding="10" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Id}" Grid.Column="0"/>
+                    <Label Text="{Binding Name}" Grid.Column="1"/>
+                    <Label Text="{Binding Pseudo}" Grid.Column="2"/>
+                    <Label Text="{Binding Team}" Grid.Column="3"/>
+                    <Label Text="{Binding Stats}" Grid.Column="4"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+          
+
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
