@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:rankingEsport"
+             xmlns:ViewModels="clr-namespace:rankingEsport.ViewModels;assembly=rankingEsport"
              x:Class="rankingEsport.MainPage">
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start">
@@ -20,12 +22,11 @@
             <Picker x:Name="pickerPlayerTeam" Title="Type de robot :" ItemsSource="{Binding Team}" SelectedItem="{Binding Team}">
             </Picker>
 
-            <Button x:Name="DrawCircleButton" Text="Ajouter" > </Button>
-          
+            <Button x:Name="DrawCircleButton" Text="Ajouter" ></Button>
+
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
 
-    
+ 

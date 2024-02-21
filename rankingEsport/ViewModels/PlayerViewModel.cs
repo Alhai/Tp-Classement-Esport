@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Linq;
 using rankingEsport.ViewModels;
 
@@ -13,8 +15,8 @@ namespace rankingEsport.ViewModels
 {
     public class PlayerViewModel : INotifyPropertyChanged
     {
-        private string id;
-        public string ID
+        private int id;
+        public int ID
         { 
             get { return id; }
             set { id = value; OnPropertyChanged(); }
@@ -43,6 +45,17 @@ namespace rankingEsport.ViewModels
             get { return statistic; }
             set { statistic = value; OnPropertyChanged(); }
         }
+        public ObservableCollection<PlayerModel> Players { get; set; } = new ObservableCollection<PlayerModel>() {
+            new PlayerModel(){
+                Name = "zahra",
+                ID= 1,
+                Pseudo= "zahra1",
+                Team= "psg",
+                Statistic= 1,
+
+              
+            }
+        };
 
         public List<string> Teams { get; set; } = new List<string>()
         {
@@ -51,20 +64,21 @@ namespace rankingEsport.ViewModels
             "liverpool",
             "leipzig"
         };
-    };
-    public PlayerViewModel()
-    {
-        AddPlayerCommand = new Command(AddPlayer);
-    }
-    public ICommand AddPlayerCommand { get; private set; }
+        public PlayerViewModel()
+        {
+            AddPlayerCommand = new Command(AddPlayer);
+        }
 
-    public void AddPlayer (PlayerViewModel player, object Players)
-    {
-        Players.Add(new PlayerModel { Name = this.Name, ID = this.ID, Pseudo = this.Pseudo, Statistic = this.Statistic, Team = this.Team });      
-    }
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+
+        public ICommand AddPlayerCommand { get; private set; }
+
+        public void AddPlayer(object obj) => Players.Add(new PlayerModel { Name = this.Name, ID = this.ID, Pseudo = this.Pseudo, Statistic = this.Statistic, Team = this.Team });
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    };
+
+    
 }
