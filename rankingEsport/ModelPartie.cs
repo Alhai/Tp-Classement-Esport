@@ -6,9 +6,11 @@ namespace rankingEspor
 	{
 		public ModelGames()
 		{
-			public int id {  get; set; },
-			public string name { get; set; },
-			public string members { get; set; },
+			public int GameId {  get; set; },
+			public string Date { get; set; },
+		    public string Game {  get; set; }
+			public string PlayersMembers { get; set; },
+		    public int Score { get; set; }
 			public int statisticTeams { get; set; }
 
 		}
