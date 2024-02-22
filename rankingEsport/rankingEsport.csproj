@@ -58,6 +58,20 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+	<ItemGroup>
+	  <AndroidResource Remove="NewFolder1\**" />
+	  <AndroidResource Remove="NewFolder\**" />
+	  <Compile Remove="NewFolder1\**" />
+	  <Compile Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder1\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <MauiCss Remove="NewFolder1\**" />
+	  <MauiCss Remove="NewFolder\**" />
+	  <MauiXaml Remove="NewFolder1\**" />
+	  <MauiXaml Remove="NewFolder\**" />
+	  <None Remove="NewFolder1\**" />
+	  <None Remove="NewFolder\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
@@ -68,6 +82,21 @@
 
 	<ItemGroup>
 	  <Folder Include="Persistances\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PlayerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\RankingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StatisticsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
