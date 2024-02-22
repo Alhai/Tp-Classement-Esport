@@ -5,26 +5,23 @@
              x:Class="rankingEsport.Pages.RankingPage"
              xmlns:local="clr-namespace:rankingEsport"
              Title="RankingPage">
-    <!--<ContentPage.BindingContext>
-        <ViewModels:RankingViewModel/>
-    </ContentPage.BindingContext>-->
-    <VerticalStackLayout Spacing="10" Padding="10" VerticalOptions="Start">
-        <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
-        <Label Text="Formulaire de Classement"  FontSize="Large" HorizontalOptions="Start" />
-        <ListView x:Name="" ItemsSource="{Binding}" />
-        <Grid BackgroundColor="LightGray" Padding="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Text="Rang" Grid.Column="0" HorizontalOptions="Start" TextColor="Black" />
-            <Label Text="Nom" Grid.Column="1" HorizontalOptions="Center" TextColor="Black" />
-            <Label Text="Taux de victoire" Grid.Column="2" HorizontalOptions="Start" TextColor="Black" />
-            <Label Text="Points Totaux" Grid.Column="3" HorizontalOptions="Start" TextColor="Black" />
-            <Label Text="Statistiques" Grid.Column="4" HorizontalOptions="End" TextColor="Black" />
-            <Picker x:Name="" ItemsSource="{Binding}" />
-        </Grid>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10" VerticalOptions="Start">
+            <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
+            <Label Text="Formulaire de Classement"  FontSize="Large" HorizontalOptions="Start" />
+            <!--<ListView x:Name="" ItemsSource="{Binding}" />-->
+            <Grid BackgroundColor="LightGray" Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Rang" Grid.Column="0" HorizontalOptions="Start" TextColor="Black" />
+                <Label Text="Joueurs/Equipes" Grid.Column="1" HorizontalOptions="Start" TextColor="Black" />
+                <Label Text="Taux de victoire" Grid.Column="2" HorizontalOptions="Start" TextColor="Black" />
+                <Label Text="Points Totaux" Grid.Column="3" HorizontalOptions="Start" TextColor="Black" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
