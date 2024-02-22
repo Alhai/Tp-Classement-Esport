@@ -68,7 +68,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Persistances\" />
-	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

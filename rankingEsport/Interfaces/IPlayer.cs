@@ -10,10 +10,9 @@ namespace rankingEsport.Interfaces
     interface IPlayer
 
     {
-        int ID { get; set; }
-        string Name { get; set; }
-        string Pseudo { get; set; }
-        Teams Team { get; set; }
-        string Statistics { get; set; }
+        void AddPlayer(object obj);
+        void RemovePlayer();
+        void UpdatePlayer();
+
     }
 }
