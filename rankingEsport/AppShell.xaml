@@ -1,16 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="rankingEsport.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:rankingEsport"
-    Shell.FlyoutBehavior="Disabled"
-    Title="rankingEsport">
+﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:rankingEsport.Pages" 
+       x:Class="rankingEsport.AppShell"
+       FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <FlyoutItem Title="Accueil">
+        <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Player">
+        <ShellContent Route="PlayerPage" ContentTemplate="{DataTemplate pages:PlayerPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Statistics">
+        <ShellContent ContentTemplate="{DataTemplate pages:StatisticsPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Ranking">
+        <ShellContent ContentTemplate="{DataTemplate pages:RankingPage}" />
+    </FlyoutItem>
 </Shell>
-

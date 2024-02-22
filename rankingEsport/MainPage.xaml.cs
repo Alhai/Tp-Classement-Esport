@@ -4,7 +4,7 @@ public partial class MainPage : ContentPage
 {
 	public MainPage()
 	{
-		InitializeComponent();
+        InitializeComponent();
 
 	}
 
@@ -12,8 +12,4 @@ public partial class MainPage : ContentPage
 	{
 
 	}
-
-
 }
-
-
