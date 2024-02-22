@@ -53,7 +53,6 @@ namespace rankingEsport.ViewModels
                 Team= "psg",
                 Statistic= 1,
 
-
             }
         };
         public List<string> Teams { get; set; } = new List<string>()

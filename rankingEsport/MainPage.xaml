@@ -23,15 +23,24 @@
             <Button x:Name="DrawCircleButton" Text="Ajouter" Command="{Binding AddPlayerCommand}" />
                 <ListView x:Name="listViewPlayers" ItemsSource="{Binding Players}">
     <ListView.Header>
-        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="5">
-            <Label Text="Id" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Nom" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Pseudo" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Equipe" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Statistiques" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Modifier" HorizontalOptions="StartAndExpand" TextColor="Black" />
-            <Label Text="Supprimer" HorizontalOptions="StartAndExpand" TextColor="Black" />
-        </StackLayout>
+         <Grid BackgroundColor="LightGray" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Id" Grid.Column="0" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Nom" Grid.Column="1" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Pseudo" Grid.Column="2" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Equipe" Grid.Column="3" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Statistiques" Grid.Column="4" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Modifier" Grid.Column="5" HorizontalOptions="Start" TextColor="Black" />
+            <Label Text="Supprimer" Grid.Column="6" HorizontalOptions="Start" TextColor="Black" />
+        </Grid>
     </ListView.Header>
     <ListView.ItemTemplate>
         <DataTemplate>
@@ -51,6 +60,8 @@
                     <Label Text="{Binding Pseudo}" Grid.Column="2"/>
                     <Label Text="{Binding Team}" Grid.Column="3"/>
                     <Label Text="{Binding Stats}" Grid.Column="4"/>
+                    <Button Grid.Column="5" Text="Modifier"></Button>
+                     <Button Grid.Column="6" Text="Modifier"></Button>
                 </Grid>
             </ViewCell>
         </DataTemplate>
