@@ -1,10 +1,10 @@
 ﻿namespace rankingEsport.Domains
 {
-    public class Teams
+    public class TeamEntity
     {
         public int ID { get; set; }
         public required string Name { get; set; }
         public required string Members { get; set; }
-        public required Teams StatsTeam { get; set; }
+        public required string StatsTeam { get; set; }
     }
 }
