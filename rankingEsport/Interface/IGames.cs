@@ -18,6 +18,7 @@ namespace rankingEsport.Interface
         void SaveStatisticGames();
         void SaveStatisticPlayers();
         void SaveStatisticteams();
-        void 
+        
+       
     }
 }
