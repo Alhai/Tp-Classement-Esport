@@ -1,4 +1,6 @@
-﻿namespace rankingEsport;
+﻿using Microsoft.Maui.Controls;
+
+namespace rankingEsport;
 
 public partial class App : Application
 {
