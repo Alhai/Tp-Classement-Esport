@@ -7,13 +7,13 @@ using rankingEsport.Interfaces;
 
 namespace rankingEsport.Domains
 { 
-    public class Player 
+    public class PlayerEntity
     {
         public int ID { get; set; }
         public required string Name { get; set; }
         public required string Pseudo { get; set; }
-        public required Teams Team { get; set; }
-        public required  string Statistics { get; set; }
+        public required string Team { get; set; }
+        public required  int Statistic { get; set; }
 
        
     }

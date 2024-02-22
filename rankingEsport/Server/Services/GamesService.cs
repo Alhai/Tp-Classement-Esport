@@ -33,5 +33,20 @@ namespace rankingEsport.Services
         {
             throw new NotImplementedException();
         }
+
+        //public void SaveGame(Game game)
+        //{
+            
+        //}
+
+        //public void UpdateGame(Game game)
+        //{
+
+        //}
+
+        public void DeleteGame(Guid gameId)
+        {
+
+        }
     }
 }
