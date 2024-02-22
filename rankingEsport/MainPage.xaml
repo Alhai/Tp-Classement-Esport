@@ -1,91 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:rankingEsport"
+             xmlns:ViewModels="clr-namespace:rankingEsport.ViewModels;assembly=rankingEsport"
              x:Class="rankingEsport.MainPage">
-
+    <ContentPage.BindingContext>
+        <ViewModels:PlayerViewModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
-        <Grid>
-            <Grid.ColumnDefinitions><!--Définition des colonnes-->
-					<ColumnDefinition Width =" *"/> 
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-					<ColumnDefinition Width =" *"/>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-					<RowDefinition Height ="*" />
-				</Grid.RowDefinitions>
-				<Label Background="White"
-                       Text="ID"
-                       Margin="1"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       />
-				<Label Background="White"
-                       Grid.Column="1"
-                       Text="NOM"
-                       Margin="1"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-					   VerticalTextAlignment="Center"
-                       />
-				<Label Background="White"
-                       Grid.Column="2"
-                       Text="PSEUDO"
-                       Margin="1"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"/>
-				<Label Background="White"
-                       Grid.Column="3"
-                       Text="équipe"
-                       Margin="1"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"/>
-				<Label Background="White"
-					   Grid.Column="4"
-					   Text="Stat"
-                       Margin="1"
-					   HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       TextColor="Black"/>
-				<Label Background="White"
-				       Grid.Column="5"
-                       Margin="1"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"/>
-				<Label Background="White"
-					   Grid.Column="6"
-                       Margin="1"
-                       HorizontalTextAlignment="Center"
-					   VerticalTextAlignment="Center"/>
-				<Button BackgroundColor="Beige"
-						Grid.Column="5"
-						WidthRequest="100"
-						HeightRequest="50"
-                        Text="Modifier"
-						TextColor="Black"/>
-				<Button BackgroundColor="Red"
-                        Grid.Column="6"
-						WidthRequest="100"
-						HeightRequest="50"
-						Text="Supprimer"
-                        TextColor="Black"/>
-        </Grid>
-    </ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start">
+            <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
 
+            <Label Text="Formulaire de création de Joueur"  FontSize="Large" HorizontalOptions="Start" />
+            <!--<Entry x:Name="entryRobotName" Text="{Binding Name}" />-->
+
+            <Label Text="Nom du Joueur :" HorizontalOptions="Start" />
+            <Entry Text="{Binding Name}" />
+
+            <Label Text="Pseudo :" HorizontalOptions="Start" />
+            <Entry Text="{Binding Pseudo}" />
+            <Picker x:Name="pickerPlayerTeam" Title="Nom d'équipe:" ItemsSource="{Binding Teams}" SelectedItem="{Binding Team}">
+            </Picker>
+            <Button x:Name="DrawCircleButton" Text="Ajouter" Command="{Binding AddPlayerCommand}" />
+                <ListView x:Name="listViewPlayers" ItemsSource="{Binding Players}">
+    <ListView.Header>
+        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="5">
+            <Label Text="Id" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Nom" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Pseudo" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Equipe" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Statistiques" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Modifier" HorizontalOptions="StartAndExpand" TextColor="Black" />
+            <Label Text="Supprimer" HorizontalOptions="StartAndExpand" TextColor="Black" />
+        </StackLayout>
+    </ListView.Header>
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <Grid Padding="10" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Id}" Grid.Column="0"/>
+                    <Label Text="{Binding Name}" Grid.Column="1"/>
+                    <Label Text="{Binding Pseudo}" Grid.Column="2"/>
+                    <Label Text="{Binding Team}" Grid.Column="3"/>
+                    <Label Text="{Binding Stats}" Grid.Column="4"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+          
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
 
+ 
