@@ -101,4 +101,10 @@
 	  <None Remove="Server\Persistances\" />
 	  <None Remove="Client\Models\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\GamesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
 </Project>
