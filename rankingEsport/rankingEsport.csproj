@@ -81,14 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Server\" />
-	  <Folder Include="Client\" />
-	  <Folder Include="Server\Domains\" />
 	  <Folder Include="Server\Services\" />
-	  <Folder Include="Client\ViewModels\" />
 	  <Folder Include="Server\Interfaces\" />
 	  <Folder Include="Server\Persistances\" />
-	  <Folder Include="Client\Models\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,5 +95,11 @@
 	  <None Remove="Server\Interfaces\" />
 	  <None Remove="Server\Persistances\" />
 	  <None Remove="Client\Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Client\Pages\GamePage.xaml.cs">
+	    <DependentUpon>GamePage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

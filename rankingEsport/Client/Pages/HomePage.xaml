@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:rankingEsport"
-             x:Class="rankingEsport.Pages.HomePage"
+             x:Class="rankingEsport.Client.Pages.HomePage"
              Title="HomePage">
     <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="CenterAndExpand">
         <Label TextColor="DarkBlue" FontSize="Header" Text="Bienvenue dans notre application E-sport!"

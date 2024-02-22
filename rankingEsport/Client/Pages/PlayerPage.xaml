@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:rankingEsport.ViewModels;assembly=rankingEsport"
              xmlns:local="clr-namespace:rankingEsport"
-             x:Class="rankingEsport.Pages.PlayerPage"
+             x:Class="rankingEsport.Client.Pages.PlayerPage"
              Title="PlayerPage">
     <ContentPage.BindingContext>
         <ViewModels:PlayerViewModel/>

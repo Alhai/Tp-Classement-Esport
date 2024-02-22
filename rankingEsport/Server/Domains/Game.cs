@@ -1,9 +1,9 @@
 ﻿using System;
 namespace rankingEsport.Domains
 {
-	public class GamePart
+	public class Game
 	{
-		public GamePart()
+		public Game()
 		{
 		}
 	}
