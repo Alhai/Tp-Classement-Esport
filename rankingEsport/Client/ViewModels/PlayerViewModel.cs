@@ -44,7 +44,7 @@ namespace rankingEsport.ViewModels
         public string Pseudo
         {
             get { return pseudo; }
-            set { Pseudo = value; OnPropertyChanged(); }
+            set { pseudo = value; OnPropertyChanged(); }
         }
 
         private string team;
@@ -61,8 +61,9 @@ namespace rankingEsport.ViewModels
         }
         public List<string> Teams { get; set; } = new List<string>()
         {
-            "Droïde de protocole",
-            "Droïde astromécano",
+            "Psg",
+            "Leipzig",
+            "Barcelona",
         };
 
 
