@@ -44,7 +44,7 @@ namespace rankingEsport.ViewModels
         public string Pseudo
         {
             get { return pseudo; }
-            set { Pseudo = value; OnPropertyChanged(); }
+            set { pseudo = value; OnPropertyChanged(); }
         }
 
         private string team;
