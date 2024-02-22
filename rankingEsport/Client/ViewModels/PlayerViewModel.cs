@@ -8,75 +8,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
+using rankingEsport.Models;
+using rankingEsport.Persistances;
+using rankingEsport.Services;
 using rankingEsport.ViewModels;
 
 
 namespace rankingEsport.ViewModels
 {
-    public class PlayerViewModel
+    public class PlayerViewModel : INotifyPropertyChanged
     {
-        //    private int id;
-        //    public int ID
-        //    { 
-        //        get { return id; }
-        //        set { id = value; OnPropertyChanged(); }
-        //    }
-        //    private string name;
-        //    public string Name
-        //    { get { return name; } 
-        //      set { name = value; OnPropertyChanged(); } 
-        //    }
-        //    private string pseudo;
-        //    public string Pseudo 
-        //    {  
-        //        get { return pseudo; } 
-        //        set { pseudo = value; OnPropertyChanged(); }
-        //    }
-        //    private string team;
-        //    public string Team
-        //    {  
-        //        get { return team; } 
-        //        set { team = value; OnPropertyChanged(); } 
-        //    }
+        private readonly PlayerService playerService;
 
-        //    private int statistic;
-        //    public int Statistic 
-        //    {
-        //        get { return statistic; }
-        //        set { statistic = value; OnPropertyChanged(); }
-        //    }
-        //    public ObservableCollection<PlayerModel> Players { get; set; } = new ObservableCollection<PlayerModel>() {
-        //        new PlayerModel(){
-        //            Name = "zahra",
-        //            ID= 1,
-        //            Pseudo= "zahra1",
-        //            Team= "psg",
-        //            Statistic= 1,
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        //        }
-        //    };
-        //    public List<string> Teams { get; set; } = new List<string>()
-        //    {
-        //        "barcelona",
-        //        "psg",
-        //        "liverpool",
-        //        "leipzig"
-        //    };
-        //    public PlayerViewModel()
-        //    {
-        //        AddPlayerCommand = new Command(AddPlayer);
-        //    }
+        public ObservableCollection<PlayerModel> Players { get; set; }
 
+        public ICommand AddPlayerCommand { get; private set; }
 
-        //    public ICommand AddPlayerCommand { get; private set; }
+        public PlayerViewModel(PlayerService playerService)
+        {
+            this.playerService = playerService;
+            this.Players = new ObservableCollection<PlayerModel>();
+            this.AddPlayerCommand = new RelayCommand(AddPlayer);
 
-        //    public void AddPlayer(object obj) => Players.Add(new PlayerModel { Name = this.Name, ID = this.ID, Pseudo = this.Pseudo, Statistic = this.Statistic, Team = this.Team });
-        //    public event PropertyChangedEventHandler PropertyChanged;
-        //    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //    {
-        //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        }; 
+        }
+        private void AddPlayer(object obj)
+        {
+            var player = new PlayerModel { Name = "Nom", Pseudo = "Pseudo", Team = "Team", Statistic = 0 };
+            playerService.AddPlayer(player);
+            Players.Add(player);
+        }
 
+    
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 
 }

@@ -71,6 +71,7 @@
 	  <MauiXaml Remove="NewFolder\**" />
 	  <None Remove="NewFolder1\**" />
 	  <None Remove="NewFolder\**" />
+	  <None Remove="Server\Persistences\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,8 +88,8 @@
 	  <Folder Include="Server\Services\" />
 	  <Folder Include="Client\ViewModels\" />
 	  <Folder Include="Server\Interfaces\" />
-	  <Folder Include="Server\Persistances\" />
 	  <Folder Include="Client\Models\" />
+	  <Folder Include="Server\Persistences\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -98,7 +99,6 @@
 	  <None Remove="Server\Services\" />
 	  <None Remove="Client\ViewModels\" />
 	  <None Remove="Server\Interfaces\" />
-	  <None Remove="Server\Persistances\" />
 	  <None Remove="Client\Models\" />
 	</ItemGroup>
 </Project>

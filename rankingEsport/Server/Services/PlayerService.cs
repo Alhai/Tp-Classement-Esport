@@ -1,5 +1,6 @@
 ﻿using rankingEsport.Domains;
 using rankingEsport.Interfaces;
+using rankingEsport.Persistances;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,13 @@ namespace rankingEsport.Services
 {
     public class PlayerService : IPlayer
     {
+        private readonly PlayerPersistence playerPersistence;
+
+        public PlayerService(PlayerPersistence playerPersistence)
+        {
+            this.playerPersistence = playerPersistence;
+        }
+
         private int id;
         public int ID
         {

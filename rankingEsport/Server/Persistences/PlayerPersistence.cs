@@ -1,9 +1,9 @@
 ﻿using System;
 namespace rankingEsport.Persistances
 {
-	public class Player
+	public class PlayerPersistence
 	{
-		public Player()
+		public PlayerPersistence()
 		{
 		}
 	}
