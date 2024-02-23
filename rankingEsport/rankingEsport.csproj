@@ -82,9 +82,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Client\" />
 	  <Folder Include="Client\ViewModels\" />
-	  <Folder Include="Client\Models\" />
 	  <Folder Include="Server\Persistences\" />
 	</ItemGroup>
 
