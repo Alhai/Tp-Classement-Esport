@@ -1,4 +1,5 @@
 ﻿using rankingEsport.Domains;
+using rankingEsport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace rankingEsport.Interfaces
     interface IPlayer
 
     {
-        void AddPlayer(object obj);
-        void RemovePlayer();
+        void AddPlayer(PlayerModel player );
         void UpdatePlayer();
+        void DeletePlayer();
 
     }
 }
