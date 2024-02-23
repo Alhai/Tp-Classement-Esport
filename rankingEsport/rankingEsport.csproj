@@ -82,11 +82,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Client\ViewModels\" />
-	  <Folder Include="Server\Persistences\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Server\" />
 	  <None Remove="Client\" />
 	  <None Remove="Server\Domains\" />
