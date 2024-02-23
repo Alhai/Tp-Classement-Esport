@@ -25,6 +25,8 @@ namespace rankingEsport.ViewModels
         public ObservableCollection<PlayerModel> Players { get; set; }
 
         public ICommand AddPlayerCommand { get; private set; }
+        public ICommand UpdatePlayerCommand { get; private set; }
+        public ICommand DeletePlayerCommand { get; private set; }
 
         private int id;
         public int Id
@@ -68,26 +70,34 @@ namespace rankingEsport.ViewModels
             "Madrid"
         };
 
-   
-
         public PlayerViewModel()
         {
             this.playerService = new PlayerService(new PlayerPersistence());
             this.Players = new ObservableCollection<PlayerModel>();
             this.AddPlayerCommand = new Command(AddPlayer);
+            this.UpdatePlayerCommand = new Command(UpdatePlayer);
+            this.DeletePlayerCommand = new Command(DeletePlayer);
         }
 
         private void AddPlayer(object obj)
         {
-            var player = new PlayerModel { Name = name, Pseudo = pseudo, Team = team, Statistic = 0 };
+            var player = new PlayerModel { ID = id, Name = name, Pseudo = pseudo, Team = team, Statistic = 0 };
             playerService.AddPlayer(player);
             Players.Add(player);
         }
 
-        private void OpenEditPlayerModal(PlayerModel player)
+        private void UpdatePlayer(object obj)
         {
-            // Implémentez la logique pour ouvrir la modal de modification ici
-            // Assurez-vous de passer l'objet `player` à la modal pour pré-remplir les champs
+            var player = new PlayerModel { Name = name, Pseudo = pseudo, Team = team, Statistic = 0 };
+            playerService.UpdatePlayer(player);
+            Players.Add(player);
+        }
+
+        private void DeletePlayer(object obj)
+        {
+            var player = new PlayerModel {ID = id, Name = name, Pseudo = pseudo, Team = team, Statistic = 0 };
+            playerService.DeletePlayer(player.ID);
+            Players.Add(player);
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

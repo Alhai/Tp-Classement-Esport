@@ -19,11 +19,11 @@
             </Picker>
             <Button x:Name="DrawCircleButton" Text="Ajouter" Command="{Binding AddPlayerCommand}" />    
 
+
             <telerik:RadDataGrid x:Name="dataGrid" ItemsSource="{Binding Players}" AutoGenerateColumns="False">
     <telerik:RadDataGrid.Columns>
         <telerik:DataGridTemplateColumn>
         </telerik:DataGridTemplateColumn>
-            <telerik:DataGridTextColumn  PropertyName="Id"  HeaderText="Id" SizeMode="Fixed"/>
                     <telerik:DataGridTextColumn  PropertyName="Name" HeaderText="Nom" SizeMode="Fixed"/>
                     <telerik:DataGridTextColumn  PropertyName="Pseudo" HeaderText="Pseudo" SizeMode="Fixed"/>
                     <telerik:DataGridTextColumn  PropertyName="Team" HeaderText="Equipe" SizeMode="Fixed"/>
@@ -31,8 +31,9 @@
         <telerik:DataGridTemplateColumn>
             <telerik:DataGridTemplateColumn.CellContentTemplate>
                 <DataTemplate>
-                    <telerik:RadButton Text="Modifier" Command="{Binding ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
-                            VerticalOptions="Center" HorizontalOptions="Center" />
+                    <!--<telerik:RadButton Text="Modifier" Command="{Binding ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
+                            VerticalOptions="Center" HorizontalOptions="Center" />-->
+                          <Button Text="Modifier" Command="{Binding UpdatePlayerCommand}" TextColor="White" Background="Blue" /> 
                 </DataTemplate>
             </telerik:DataGridTemplateColumn.CellContentTemplate>
 
@@ -40,15 +41,13 @@
         <telerik:DataGridTemplateColumn>
             <telerik:DataGridTemplateColumn.CellContentTemplate>
                 <DataTemplate>
-                    <telerik:RadButton Text="Supprimer" Command="{Binding ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
-                            VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Button Text="Supprimer" Command="{Binding DeletePlayer}"  Background="Red" />
                 </DataTemplate>
             </telerik:DataGridTemplateColumn.CellContentTemplate>
         </telerik:DataGridTemplateColumn>
 
     </telerik:RadDataGrid.Columns>
 </telerik:RadDataGrid>
-<telerik:RadButton x:Name="Supprimer" Text="Supprimer" Command="{Binding DeletePlayerCommand}"/> 
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
