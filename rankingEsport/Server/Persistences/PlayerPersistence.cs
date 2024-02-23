@@ -5,6 +5,7 @@ namespace rankingEsport.Persistances
 	{
 		public PlayerPersistence()
 		{
+
 		}
 	}
 }

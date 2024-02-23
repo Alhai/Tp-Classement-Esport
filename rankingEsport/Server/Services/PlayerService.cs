@@ -68,6 +68,16 @@ namespace rankingEsport.Services
             throw new NotImplementedException();
         }
 
+        public string AccountHolderName { get; private set; }
+
+        public string UpdatePlayer(string newUpdatePlayer)
+        {
+            AccountHolderName = newUpdatePlayer;
+            return AccountHolderName;
+        }
+
+     
+
         public ICommand AddPlayerCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -75,5 +85,7 @@ namespace rankingEsport.Services
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+      
     }
 }
