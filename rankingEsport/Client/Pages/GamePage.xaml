@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:local="clr-namespace:rankingEsport"
              xmlns:ViewModels="clr-namespace:rankingEsport.Client.ViewModels"
-             x:Class="rankingEsport.Client.Pages.GamePage"
-             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui">
+             x:Class="rankingEsport.Client.Pages.GamePage">
     <ContentPage.BindingContext>
         <ViewModels:GameViewModel/>
     </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start">
+        <StackLayout Padding="20" Spacing="20">
             <Label Text="Enregistrement des résultats" FontSize="Large" HorizontalOptions="Center" />
 
-            <Entry x:Name="entryGameID" Placeholder="Id unique du jeu" Text="{Binding GameID}" />
-            <DatePicker x:Name="datePickerGameDate" Date="{Binding GameDate}" />
-            <Picker x:Name="pickerGame" Title="Jeu (basketball, football, handball, baseball)" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}" />
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="ID du jeu:" VerticalOptions="Center" />
+                <Entry x:Name="entryGameID" Placeholder="Entrez l'ID unique du jeu" Text="{Binding GameID}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
 
-            <Entry x:Name="entryTeamsPlayers" Placeholder="Équipes/Joueur" Text="{Binding TeamsPlayers}" />
-            <Entry x:Name="entryScore" Placeholder="Score" Text="{Binding Score}" />
-            <Editor x:Name="editorGameStatistics" Placeholder="Statistiques de la partie" Text="{Binding GameStatistics}" />
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Date du jeu:" VerticalOptions="Center" />
+                <DatePicker x:Name="datePickerGameDate" Date="{Binding GameDate}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
 
-            <telerik:RadButton x:Name="buttonSaveGame" Text="Enregistrer" Command="{Binding SaveGameCommand}" />
-            <telerik:RadButton x:Name="buttonEditGame" Text="Modifier" Command="{Binding EditGameCommand}" />
-            <telerik:RadButton x:Name="buttonDeleteGame" Text="Supprimer" Command="{Binding DeleteGameCommand}" />
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Type de jeu:" VerticalOptions="Center" />
+                <Picker x:Name="pickerGame" Title="Sélectionnez le type de jeu" ItemsSource="{Binding Games}" SelectedItem="{Binding GameType}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
 
-            <ListView x:Name="listViewGames" ItemsSource="{Binding GamesList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10" ColumnSpacing="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding ID}" />
-                                <Label Grid.Column="1" Text="{Binding Date}" />
-                                <Label Grid.Column="2" Text="{Binding Game}" />
-                                <Label Grid.Column="3" Text="{Binding Score}" />
-                                <telerik:RadButton Grid.Column="4" Text="Modifier" Command="{Binding EditCommand}" />
-                                <telerik:RadButton Grid.Column="5" Text="Supprimer" Command="{Binding DeleteCommand}" TextColor="Red" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Équipes/Joueurs:" VerticalOptions="Center" />
+                <Entry x:Name="entryTeamsPlayers" Placeholder="Entrez les équipes ou les joueurs" Text="{Binding TeamsPlayers}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Score:" VerticalOptions="Center" />
+                <Entry x:Name="entryScore" Placeholder="Entrez le score" Text="{Binding Score}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Statistiques de la partie:" VerticalOptions="Center" />
+                <Editor x:Name="editorGameStatistics" Placeholder="Ajoutez les statistiques de la partie" Text="{Binding GameStatistics}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            <Button Text="Ajouter la partie" Command="{Binding SaveGameCommand}" HorizontalOptions="Center" Margin="0,20,0,0"/>
+            <StackLayout>
+                <Label Text="Liste des jeux" HorizontalOptions="Center" FontSize="Large" />
+                <telerik:RadDataGrid ItemsSource="{Binding GamesList}" x:Name="GamesList" AutoGenerateColumns="True" HeightRequest="400">
+                    <telerik:RadDataGrid.BindingContext>
+                        <ViewModels:GameViewModel />
+                    </telerik:RadDataGrid.BindingContext>
+                    <telerik:RadDataGrid.Columns>
+                        <telerik:DataGridTextColumn PropertyName="GameID" HeaderText="ID" />
+                        <telerik:DataGridTextColumn PropertyName="FormattedDate"  />
+                        <telerik:DataGridTextColumn PropertyName="GameType" />
+                        <telerik:DataGridTextColumn PropertyName="TeamsPlayers" />
+                        <telerik:DataGridNumericalColumn PropertyName="Score" />
+                    </telerik:RadDataGrid.Columns>
+                </telerik:RadDataGrid>
+            </StackLayout>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

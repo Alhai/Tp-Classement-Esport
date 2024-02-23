@@ -1,14 +1,18 @@
-﻿using rankingEsport.Models;
+﻿using rankingEsport.Domains;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using rankingEsport.Services;
+using rankingEsport.Interfaces;
 
 namespace rankingEsport.Client.ViewModels
 {
     public class GameViewModel : INotifyPropertyChanged
     {
+        private readonly IGames _gameService;
         private int gameID;
         public int GameID
         {
@@ -16,18 +20,25 @@ namespace rankingEsport.Client.ViewModels
             set { gameID = value; OnPropertyChanged(); }
         }
 
-        private DateTime gameDate;
+        private DateTime gameDate = DateTime.Now;
         public DateTime GameDate
         {
             get { return gameDate; }
-            set { gameDate = value; OnPropertyChanged(); }
+            set
+            {
+                gameDate = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FormattedDate));
+            }
         }
 
-        private string selectedGame;
-        public string SelectedGame
+        public string FormattedDate => GameDate.ToString("d");
+
+        private string gameType;
+        public string GameType
         {
-            get { return selectedGame; }
-            set { selectedGame = value; OnPropertyChanged(); }
+            get { return gameType; }
+            set { gameType = value; OnPropertyChanged(); }
         }
 
         private string teamsPlayers;
@@ -51,7 +62,6 @@ namespace rankingEsport.Client.ViewModels
             set { gameStatistics = value; OnPropertyChanged(); }
         }
 
-        // List of games for the picker
         public List<string> Games { get; set; } = new List<string>()
         {
             "Basketball",
@@ -60,42 +70,68 @@ namespace rankingEsport.Client.ViewModels
             "Baseball"
         };
 
-        // ObservableCollection of GameModel instances
-        public ObservableCollection<GameModel> GamesList { get; set; } = new ObservableCollection<GameModel>();
+        public ObservableCollection<GameModel> GamesList { get; set; }
 
         public ICommand SaveGameCommand { get; private set; }
-        public ICommand EditGameCommand { get; private set; }
-        public ICommand DeleteGameCommand { get; private set; }
+        public ICommand EditCommand { get; private set; }
+        public ICommand DeleteCommand { get; private set; }
 
-        public GameViewModel()
+        public GameViewModel() : this(new GameService())
         {
+        }
+        public GameViewModel(IGames gameService)
+        {
+            _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
+            GamesList = new ObservableCollection<GameModel>(_gameService.GetGames());
+
             SaveGameCommand = new Command(SaveGame);
-            EditGameCommand = new Command(EditGame);
-            DeleteGameCommand = new Command(DeleteGame);
+            EditCommand = new Command(EditGame);
+            DeleteCommand = new Command(DeleteGame);
+        }
 
-            // Add a sample game to the collection
-            GamesList.Add(new GameModel
+
+        private void SaveGame()
+        {
+            var newGame = new GameModel
             {
-                ID = 1,
-                GameType = "Basketball",
-                Date = DateTime.Now,
-                // Initialize other properties if necessary
-            });
+                GameID = GameID,
+                GameType = GameType,
+                Date = GameDate,
+                TeamsPlayers = TeamsPlayers,
+                Score = Score,
+                GameStatistics = GameStatistics,
+            };
+
+            _gameService.AddGame(newGame); 
+            GamesList.Add(newGame); 
+            ResetFormData();
         }
 
-        private void SaveGame(object obj)
+
+        private void EditGame(object gameToEdit)
         {
-            // Implementation of saving game data
+            if (gameToEdit is GameModel game)
+            {
+                _gameService.UpdateGame(game);
+            }
         }
 
-        private void EditGame(object obj)
+        private void DeleteGame(object gameModel)
         {
-            // Implementation of editing game data
+            if (gameModel is GameModel game)
+            {
+                _gameService.DeleteGame(game.GameID);
+            }
         }
 
-        private void DeleteGame(object obj)
+        private void ResetFormData()
         {
-            // Implementation of deleting game data
+            GameID = 0;
+            GameDate = DateTime.Now;
+            GameType = null;
+            TeamsPlayers = string.Empty;
+            Score = string.Empty;
+            GameStatistics = string.Empty;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

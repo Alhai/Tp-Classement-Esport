@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using rankingEsport.Domains;
 
 namespace rankingEsport.Interfaces
 {
-     interface IGames
+    public interface IGames 
     {
-        void Result();
-        void SaveResultGame();
-        void SaveResultPlayers();
-        void SaveResultTeams();
-        void SoloGame();
-        void MultiPlayerGame();
-
+        ObservableCollection<GameModel> GetGames();
+        void AddGame(GameModel game);
+        void UpdateGame(GameModel game);
+        void DeleteGame(int gameId);
     }
 }
+
