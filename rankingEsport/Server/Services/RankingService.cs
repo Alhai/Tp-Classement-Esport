@@ -45,12 +45,18 @@ namespace rankingEsport.Server.Services
             get { return totalpoint; }
             set { totalpoint = value; OnPropertyChanged(); }
             }
+        private DateTime date;
 
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; OnPropertyChanged(); }
+        }
         void IRanking.FilterDate()
         {
             var sortedTeams = team.OrderBy(team => team.Date());
 
-            foreach (var team in sortedTeams)
+            /*foreach (var team in sortedTeams)
             {
                 Console.WriteLine(team.Date());
             }
@@ -69,6 +75,7 @@ namespace rankingEsport.Server.Services
 
         void IRanking.FilterVictory()
         {
+            /*var victory = winrate.OrderByDescending(winrate => winrate);
             throw new NotImplementedException(); // classer en fonction du nombre de victoire
             /*
             * récupérer les taux de victoires des équipes 
