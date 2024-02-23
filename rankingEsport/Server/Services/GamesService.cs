@@ -12,6 +12,7 @@ namespace rankingEsport.Services
 
         public GameService()
         {
+            // Ajoute un jeu de démo
             GamesList.Add(new GameModel
             {
                 GameID = 1,
@@ -23,11 +24,13 @@ namespace rankingEsport.Services
             });
         }
 
+        // Méthode pour ajouter un jeu à la liste
         public void AddGame(GameModel game)
         {
             GamesList.Add(game);
         }
 
+        // Méthode pour supprimer un jeu de la liste
         public void DeleteGame(int gameId)
         {
             var game = GamesList.FirstOrDefault(g => g.GameID == gameId);
@@ -35,11 +38,13 @@ namespace rankingEsport.Services
                 GamesList.Remove(game);
         }
 
+        // Méthode pour récupérer la liste des jeux
         public ObservableCollection<GameModel> GetGames()
         {
             return GamesList;
         }
 
+        // Méthode pour mettre à jour les info
         public void UpdateGame(GameModel game)
         {
             var existingGame = GamesList.FirstOrDefault(g => g.GameID == game.GameID);

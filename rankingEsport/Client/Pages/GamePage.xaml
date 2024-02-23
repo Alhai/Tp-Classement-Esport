@@ -4,11 +4,14 @@
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:local="clr-namespace:rankingEsport"
              xmlns:ViewModels="clr-namespace:rankingEsport.Client.ViewModels"
-             x:Class="rankingEsport.Client.Pages.GamePage">
+             x:Class="rankingEsport.Client.Pages.GamePage"
+             x:Name="Game"
+             >
     <ContentPage.BindingContext>
         <ViewModels:GameViewModel/>
     </ContentPage.BindingContext>
     <ScrollView>
+        <!-- Creation formulaire -->
         <StackLayout Padding="20" Spacing="20">
             <Label Text="Enregistrement des résultats" FontSize="Large" HorizontalOptions="Center" />
 
@@ -41,7 +44,11 @@
                 <Label Text="Statistiques de la partie:" VerticalOptions="Center" />
                 <Editor x:Name="editorGameStatistics" Placeholder="Ajoutez les statistiques de la partie" Text="{Binding GameStatistics}" HorizontalOptions="FillAndExpand" />
             </StackLayout>
+
+            <!-- Bouton ajouter une partie -->
             <Button Text="Ajouter la partie" Command="{Binding SaveGameCommand}" HorizontalOptions="Center" Margin="0,20,0,0"/>
+
+            <!-- Liste des jeux avec un DataGrid -->
             <StackLayout>
                 <Label Text="Liste des jeux" HorizontalOptions="Center" FontSize="Large" />
                 <telerik:RadDataGrid x:Name="gamesList" ItemsSource="{Binding GamesList}" AutoGenerateColumns="False">
@@ -51,19 +58,27 @@
                         <telerik:DataGridTextColumn PropertyName="GameType" HeaderText="Type" SizeMode="Fixed"/>
                         <telerik:DataGridTextColumn PropertyName="TeamsPlayers" HeaderText="Equipes/Joueurs" SizeMode="Fixed"/>
                         <telerik:DataGridTextColumn PropertyName="Score" HeaderText="Score" SizeMode="Fixed"/>
-                        <telerik:DataGridTemplateColumn>
-                            <telerik:DataGridTemplateColumn.CellContentTemplate>
-                <DataTemplate>
-                                    <Button Text="Modifier" Command="{Binding EditCommand, Source={x:Reference gamesList}}" 
-                            VerticalOptions="Center" HorizontalOptions="Center" />
-                </DataTemplate>
-            </telerik:DataGridTemplateColumn.CellContentTemplate>
-                        </telerik:DataGridTemplateColumn>
-                        <telerik:DataGridTemplateColumn>
+                        <telerik:DataGridTemplateColumn HeaderText="Action" SizeMode="Fixed" Width="100">
+                            <!-- Bouton de modification -->
                             <telerik:DataGridTemplateColumn.CellContentTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="supprimer" Text="Supprimer" Command="{Binding DeleteCommand, Source={x:Reference gamesList}}" 
-                            VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Button Text="Modifier"
+                            Grid.Column="5"
+                            BackgroundColor="green"
+                            Command="{Binding Path=BindingContext.EditCommand, Source={x:Reference Name=listViewGames}}"
+                            CommandParameter="{Binding .}"/>
+                                </DataTemplate>
+                            </telerik:DataGridTemplateColumn.CellContentTemplate>
+                            <!-- Bouton de suppression -->
+                        </telerik:DataGridTemplateColumn>
+                        <telerik:DataGridTemplateColumn HeaderText="Action" SizeMode="Fixed" Width="100">
+                            <telerik:DataGridTemplateColumn.CellContentTemplate>
+                                <DataTemplate>
+                                    <Button Text="Supprimer"
+                            Grid.Column="6"
+                            BackgroundColor="red"
+                            Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=listViewGames}}"
+                            CommandParameter="{Binding .}"/>
                                 </DataTemplate>
                             </telerik:DataGridTemplateColumn.CellContentTemplate>
                         </telerik:DataGridTemplateColumn>

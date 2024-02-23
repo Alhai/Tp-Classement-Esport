@@ -1,10 +1,10 @@
-﻿using rankingEsport.Domains;
-using System;
+﻿using rankingEsport.Domains; 
+using System; 
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Collections.ObjectModel; 
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
+using System.Runtime.CompilerServices; 
+using System.Windows.Input; 
 using rankingEsport.Services;
 using rankingEsport.Interfaces;
 
@@ -13,6 +13,7 @@ namespace rankingEsport.Client.ViewModels
     public class GameViewModel : INotifyPropertyChanged
     {
         private readonly IGames _gameService;
+
         private int gameID;
         public int GameID
         {
@@ -62,6 +63,7 @@ namespace rankingEsport.Client.ViewModels
             set { gameStatistics = value; OnPropertyChanged(); }
         }
 
+        // Liste des types de jeux disponibles
         public List<string> Games { get; set; } = new List<string>()
         {
             "Basketball",
@@ -72,6 +74,7 @@ namespace rankingEsport.Client.ViewModels
 
         public ObservableCollection<GameModel> GamesList { get; set; }
 
+        // Commandes sauvegarde,modif, sup
         public ICommand SaveGameCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
@@ -79,6 +82,8 @@ namespace rankingEsport.Client.ViewModels
         public GameViewModel() : this(new GameService())
         {
         }
+
+        // Constructeur injection de dépendances
         public GameViewModel(IGames gameService)
         {
             _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
@@ -89,7 +94,7 @@ namespace rankingEsport.Client.ViewModels
             DeleteCommand = new Command(DeleteGame);
         }
 
-
+        // sauvegarde jeu
         private void SaveGame()
         {
             var newGame = new GameModel
@@ -102,12 +107,12 @@ namespace rankingEsport.Client.ViewModels
                 GameStatistics = gameStatistics,
             };
 
-            _gameService.AddGame(newGame); 
-            GamesList.Add(newGame); 
+            _gameService.AddGame(newGame);
+            GamesList.Add(newGame);
             ResetFormData();
         }
 
-
+        // edit jeu
         private void EditGame(object gameToEdit)
         {
             if (gameToEdit is GameModel game)
@@ -116,6 +121,7 @@ namespace rankingEsport.Client.ViewModels
             }
         }
 
+        // supp jeu
         private void DeleteGame(object gameModel)
         {
             if (gameModel is GameModel game)
@@ -124,6 +130,7 @@ namespace rankingEsport.Client.ViewModels
             }
         }
 
+        //reintialise jeu
         private void ResetFormData()
         {
             GameID = 0;
@@ -135,6 +142,7 @@ namespace rankingEsport.Client.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
