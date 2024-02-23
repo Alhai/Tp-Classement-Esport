@@ -54,7 +54,7 @@ namespace rankingEsport.Server.Services
         }
         void IRanking.FilterDate()
         {
-            var sortedTeams = team.OrderBy(team => team.Date());
+            //var sortedTeams = team.OrderBy(team => team.Date());
 
             /*foreach (var team in sortedTeams)
             {
