@@ -1,4 +1,4 @@
-namespace rankingEsport.Pages;
+namespace rankingEsport.Client.Pages;
 
 public partial class PlayerPage : ContentPage
 {

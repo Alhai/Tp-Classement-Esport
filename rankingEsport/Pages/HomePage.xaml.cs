@@ -1,9 +1,12 @@
-namespace rankingEsport.Pages;
+
+namespace rankingEsport.Client.Pages;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
-	{
-		InitializeComponent();
-	}
+    public HomePage()
+    {
+        InitializeComponent();
+
+    }
+
 }

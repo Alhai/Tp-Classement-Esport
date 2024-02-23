@@ -1,9 +1,13 @@
-namespace rankingEsport.Pages;
 
-public partial class GamesPage : ContentPage
+namespace rankingEsport.Client.Pages;
+
+public partial class GamePage : ContentPage
 {
-	public GamesPage()
-	{
-		InitializeComponent();
-	}
+    public GamePage()
+    {
+        InitializeComponent();
+
+    }
+
+
 }

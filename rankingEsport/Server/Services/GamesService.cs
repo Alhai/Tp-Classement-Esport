@@ -1,97 +1,61 @@
-﻿using rankingEsport.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using rankingEsport.Interfaces;
+using rankingEsport.Domains;
+
 
 namespace rankingEsport.Services
 {
-    public class GamesService : IGames
+    public class GameService : IGames
     {
-        private int id;
-        public int Id 
-        {   get { return id; } 
-            set { id = value; OnPropertyChanged(); } 
-        }
-        private DateTime date;
-        public GamesService(DateTime date)
+        public ObservableCollection<GameModel> GamesList { get; set; } = new ObservableCollection<GameModel>();
+
+        public GameService()
         {
-            this.date = date;
-        }
-        public DateTime Date 
-        {
-            get { return date; }
-            set { date = value; OnPropertyChanged(); }
+            // Ajoute un jeu de démo
+            GamesList.Add(new GameModel
+            {
+                GameID = 1,
+                GameType = "Basketball",
+                Date = DateTime.Now,
+                TeamsPlayers = "zahra",
+                Score = "10",
+                GameStatistics = "bien",
+            });
         }
 
-        private string gamename;
-        public string GameName 
-        {   get { return gamename; } 
-            set { gamename = value; OnPropertyChanged(); } 
-        }
-        private int score;
-
-        public int Score 
-        {   get { return score; } 
-            set { score = value; OnPropertyChanged(); } 
-        }
-        private string statistic;
-
-        public string Statistic
+        // Méthode pour ajouter un jeu à la liste
+        public void AddGame(GameModel game)
         {
-            get { return statistic; }
-            set { statistic = value; OnPropertyChanged(); }
+            GamesList.Add(game);
         }
 
-        public void Result()
+        // Méthode pour supprimer un jeu de la liste
+        public void DeleteGame(int gameId)
         {
-            throw new NotImplementedException();
-        }
-        public void SaveResultGame()
-        {
-            throw new NotImplementedException();
-        }
-        public void SaveResultPlayers()
-        {
-            throw new NotImplementedException();
-        }
-        public void SaveResultTeams()
-        {
-            throw new NotImplementedException();
-        }
-        public void SoloGame()
-        {
-            throw new NotImplementedException();
-        }
-        public void MultiPlayerGame()
-        {
-            throw new NotImplementedException();
+            var game = GamesList.FirstOrDefault(g => g.GameID == gameId);
+            if (game != null)
+                GamesList.Remove(game);
         }
 
-        //public void SaveGame(Game game)
-        //{
-            
-        //}
-
-        //public void UpdateGame(Game game)
-        //{
-
-        //}
-
-        public void DeleteGame(Guid gameId)
+        // Méthode pour récupérer la liste des jeux
+        public ObservableCollection<GameModel> GetGames()
         {
-
+            return GamesList;
         }
-        public ICommand AddGameCommand { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+
+        // Méthode pour mettre à jour les info
+        public void UpdateGame(GameModel game)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var existingGame = GamesList.FirstOrDefault(g => g.GameID == game.GameID);
+            if (existingGame != null)
+            {
+                existingGame.GameType = game.GameType;
+                existingGame.Date = game.Date;
+                existingGame.TeamsPlayers = game.TeamsPlayers;
+                existingGame.Score = game.Score;
+                existingGame.GameStatistics = game.GameStatistics;
+            }
         }
     }
 }
-

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:rankingEsport.Client.ViewModels"
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
-             x:Class="rankingEsport.Pages.RankingPage"
+             x:Class="rankingEsport.Client.Pages.RankingPage"
              xmlns:local="clr-namespace:rankingEsport"
              Title="RankingPage">
     <ContentPage.BindingContext>
