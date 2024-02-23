@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace rankingEsport.Client.Models
 {
-    public class RankingModel
+    public class RankingModel // création du model de classe Rank
     {
-        public int Rank { get; set; }
-        public required string Team { get; set; }
-        public int WinRate { get; set; }
-        public int TotalPoint { get; set; }
+        public int Rank { get; set; } // entier Rank
+        public required string Team { get; set; } //chaine de caractère Team
+        public int WinRate { get; set; } // entier WinRate
+        public int TotalPoint { get; set; } // entier TotalPoint
     }
 }

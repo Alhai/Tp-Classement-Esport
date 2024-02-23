@@ -2,39 +2,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:rankingEsport.Client.ViewModels"
-             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui" 
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              x:Class="rankingEsport.Pages.RankingPage"
              xmlns:local="clr-namespace:rankingEsport"
              Title="RankingPage">
     <ContentPage.BindingContext>
-        <ViewModels:RankingViewModel/>
+        <ViewModels:RankingViewModel/> <!-- Appel de la ViewModel-->
     </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout Spacing="50" Padding="10" VerticalOptions="Start">
             <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
             <Label Text="Formulaire de Classement"  FontSize="Large" HorizontalOptions="Start" />
             <StackLayout Padding="20" Spacing="20">
-                <Picker Title="Rang" ItemsSource="{Binding RanksList}" SelectedItem="{Binding Rank}"></Picker>
+                <Picker Title="Rang" ItemsSource="{Binding RanksList}" SelectedItem="{Binding Rank}"></Picker><!--Liste déroulante des différents rang + appel avec Binding de la liste-->
             </StackLayout>
             <StackLayout Padding="20" Spacing="20">
                 <Label Text="Nom de l'équipe" HorizontalOptions="Start"/>
-                <Entry Text="{Binding Team}" />
+                <Entry Text="{Binding Team}" /> <!--input de Team-->
             </StackLayout>
             <StackLayout Padding="20" Spacing="20">
-                <Picker Title="Nombres de Victoire" ItemsSource="{Binding VictoryList}" SelectedItem="{Binding WinRate}"></Picker>
+                <Picker Title="Nombres de Victoire" ItemsSource="{Binding VictoryList}" SelectedItem="{Binding WinRate}"></Picker> <!--Liste déroulante des nombres de victoire + appel avec Binding de la liste-->
             </StackLayout>
             <StackLayout Padding="20" Spacing="20">
                 <Label Text="Total de Points" HorizontalOptions="Start"/>
-                <Entry Text="{Binding TotalPoint}" />
+                <Entry Text="{Binding TotalPoint}" /><!--Input de TotalPoint -->
             </StackLayout>
-            <Button Text="Ajouter" Command="{Binding }" />
+            <Button Text="Ajouter" Command="{Binding AddRankingCommand}" /><!--Boutton d'ajout-->
             <StackLayout Orientation="Horizontal" Spacing="50">
                 <telerik:RadDataGrid x:Name="RankingList" ItemsSource="{Binding RanksList}" AutoGenerateColumns="False">
-                    <telerik:RadDataGrid.Columns>
-                        <telerik:DataGridTextColumn PropertyName="Rank" HeaderText="Rang" SizeMode="Fixed"/>
-                        <telerik:DataGridTextColumn PropertyName="Teams" HeaderText="Equipe/Joueur" SizeMode="Fixed"/>
-                        <telerik:DataGridTextColumn PropertyName="WinRate" HeaderText="Victoire" SizeMode="Fixed"/>
-                        <telerik:DataGridTextColumn PropertyName="TotalPoint" HeaderText="Points Total" SizeMode="Fixed"/>
+                    <telerik:RadDataGrid.Columns><!--Tableau -->
+                        <telerik:DataGridTextColumn PropertyName="Rank" HeaderText="Rang" SizeMode="Fixed"/><!--Colonne Rang-->
+                        <telerik:DataGridTextColumn PropertyName="Teams" HeaderText="Equipe/Joueur" SizeMode="Fixed"/><!--Colonne Eqipe-->
+                        <telerik:DataGridTextColumn PropertyName="WinRate" HeaderText="Victoire" SizeMode="Fixed"/><!--Colonne Victoire-->
+                        <telerik:DataGridTextColumn PropertyName="TotalPoint" HeaderText="Points Total" SizeMode="Fixed"/><!--Colonne PointsTotal-->
                     </telerik:RadDataGrid.Columns>
                 </telerik:RadDataGrid>
             </StackLayout>

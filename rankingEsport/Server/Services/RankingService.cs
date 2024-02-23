@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace rankingEsport.Server.Services
 {
-    public class RankingService : IRanking
+    public class RankingService : IRanking // création du service RankingService qui implémente l'interface IRanking
     {
         private readonly RankingPersistence RankingPersistence;//Lien vers la persistence de Ranking
 
@@ -47,22 +47,22 @@ namespace rankingEsport.Server.Services
             get { return totalpoint; }
             set { totalpoint = value; OnPropertyChanged(); }
             }
-        public void AddRanking() // méthode dd'ajout d'un rang avec ces différents paramètre
+        public void AddRanking() // méthode d'ajout d'un rang avec ces différents paramètre
         {
             new RankEntity { Rank = this.rank , Team = this.team , WinRate = this.winrate , TotalPoint = this.totalpoint };
         }
-        void IRanking.FilterDate()
+        void IRanking.FilterDate() // méthode de filtrage par Date
         {
             throw new NotImplementedException();
         }
 
-        void IRanking.FilterGame()
+        void IRanking.FilterGame() //méthde de filtrage par jeu
         {
             throw new NotImplementedException(); 
            
         }
 
-        void IRanking.FilterVictory()
+        void IRanking.FilterVictory() // méthode de filtrage par Victoire
         {
             throw new NotImplementedException();
         }
