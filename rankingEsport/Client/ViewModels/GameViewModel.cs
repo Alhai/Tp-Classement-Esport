@@ -94,12 +94,12 @@ namespace rankingEsport.Client.ViewModels
         {
             var newGame = new GameModel
             {
-                GameID = GameID,
-                GameType = GameType,
-                Date = GameDate,
-                TeamsPlayers = TeamsPlayers,
-                Score = Score,
-                GameStatistics = GameStatistics,
+                GameID = gameID,
+                GameType = gameType,
+                Date = gameDate,
+                TeamsPlayers = teamsPlayers,
+                Score = score,
+                GameStatistics = gameStatistics,
             };
 
             _gameService.AddGame(newGame); 

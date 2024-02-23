@@ -44,16 +44,29 @@
             <Button Text="Ajouter la partie" Command="{Binding SaveGameCommand}" HorizontalOptions="Center" Margin="0,20,0,0"/>
             <StackLayout>
                 <Label Text="Liste des jeux" HorizontalOptions="Center" FontSize="Large" />
-                <telerik:RadDataGrid ItemsSource="{Binding GamesList}" x:Name="GamesList" AutoGenerateColumns="True" HeightRequest="400">
-                    <telerik:RadDataGrid.BindingContext>
-                        <ViewModels:GameViewModel />
-                    </telerik:RadDataGrid.BindingContext>
+                <telerik:RadDataGrid x:Name="gamesList" ItemsSource="{Binding GamesList}" AutoGenerateColumns="False">
                     <telerik:RadDataGrid.Columns>
-                        <telerik:DataGridTextColumn PropertyName="GameID" HeaderText="ID" />
-                        <telerik:DataGridTextColumn PropertyName="FormattedDate"  />
-                        <telerik:DataGridTextColumn PropertyName="GameType" />
-                        <telerik:DataGridTextColumn PropertyName="TeamsPlayers" />
-                        <telerik:DataGridNumericalColumn PropertyName="Score" />
+                        <telerik:DataGridTextColumn PropertyName="GameID" HeaderText="ID" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="FormattedDate" HeaderText="Date" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="GameType" HeaderText="Type" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="TeamsPlayers" HeaderText="Equipes/Joueurs" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="Score" HeaderText="Score" SizeMode="Fixed"/>
+                        <telerik:DataGridTemplateColumn>
+                            <telerik:DataGridTemplateColumn.CellContentTemplate>
+                <DataTemplate>
+                                    <Button Text="Modifier" Command="{Binding EditCommand, Source={x:Reference gamesList}}" 
+                            VerticalOptions="Center" HorizontalOptions="Center" />
+                </DataTemplate>
+            </telerik:DataGridTemplateColumn.CellContentTemplate>
+                        </telerik:DataGridTemplateColumn>
+                        <telerik:DataGridTemplateColumn>
+                            <telerik:DataGridTemplateColumn.CellContentTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="supprimer" Text="Supprimer" Command="{Binding DeleteCommand, Source={x:Reference gamesList}}" 
+                            VerticalOptions="Center" HorizontalOptions="Center" />
+                                </DataTemplate>
+                            </telerik:DataGridTemplateColumn.CellContentTemplate>
+                        </telerik:DataGridTemplateColumn>
                     </telerik:RadDataGrid.Columns>
                 </telerik:RadDataGrid>
             </StackLayout>
