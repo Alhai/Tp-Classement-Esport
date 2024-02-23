@@ -9,8 +9,9 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
-            .UseTelerik()
-            .UseMauiApp<App>()
+ rankin  g
+			.UseTelerik()
+			.UseMauiApp<App>()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "O	penSansRegular");
@@ -20,6 +21,7 @@ public static class MauiProgram
 
 #if DEBUG
 		builder.Logging.AddDebug();
+		builder.UseTelerik();
 #endif
 
 		return builder.Build();

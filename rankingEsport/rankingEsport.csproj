@@ -82,17 +82,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Server\" />
-	  <Folder Include="Client\" />
-	  <Folder Include="Server\Domains\" />
-	  <Folder Include="Server\Services\" />
-	  <Folder Include="Client\ViewModels\" />
-	  <Folder Include="Server\Interfaces\" />
-	  <Folder Include="Client\Models\" />
-	  <Folder Include="Server\Persistences\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Server\" />
 	  <None Remove="Client\" />
 	  <None Remove="Server\Domains\" />
@@ -100,5 +89,11 @@
 	  <None Remove="Client\ViewModels\" />
 	  <None Remove="Server\Interfaces\" />
 	  <None Remove="Client\Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\GamesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>
