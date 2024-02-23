@@ -48,20 +48,32 @@ namespace rankingEsport.Server.Services
 
         void IRanking.FilterDate()
         {
-            throw new NotImplementedException();
+            var sortedTeams = team.OrderBy(team => team.Date());
+
+            foreach (var team in sortedTeams)
+            {
+                Console.WriteLine(team.Date());
+            }
             /*
              * classer en fonction de la date
+             * récupérer la date d'affichage des résultats de l'équipe
+             * en fonction de ces résultats classer ordre croissant dans le tableau
              */
         }
 
         void IRanking.FilterGame()
         {
-            throw new NotImplementedException(); //classer en fonction de résultat de jeu
+            //throw new NotImplementedException(); classer en fonction de résultat de jeu
+           
         }
 
         void IRanking.FilterVictory()
         {
             throw new NotImplementedException(); // classer en fonction du nombre de victoire
+            /*
+            * récupérer les taux de victoires des équipes 
+            * classer en ordre décroissant
+            */
         }
 
         void IRanking.RankingPlayers()
