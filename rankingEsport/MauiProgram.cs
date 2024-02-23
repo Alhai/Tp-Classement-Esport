@@ -19,6 +19,7 @@ public static class MauiProgram
 
 #if DEBUG
 		builder.Logging.AddDebug();
+		builder.UseTelerik();
 #endif
 
 		return builder.Build();

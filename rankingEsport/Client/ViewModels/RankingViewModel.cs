@@ -57,10 +57,15 @@ namespace rankingEsport.Client.ViewModels
             this.rankingService = new RankingService(new RankingPersistence());
             this.Rankings = new ObservableCollection<RankingModel>();
         }
-        public List<int> Ranks { get; set; } = new List<int>()
+        public List<int> RanksList { get; set; } = new List<int>()
         {
             1, 2, 3,
             4, 5, 6
+        };
+
+        public List<int> VictoryList { get; set; } = new List<int>()
+        {
+            1,2, 3, 4, 5, 6
         };
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

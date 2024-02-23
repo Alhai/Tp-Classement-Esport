@@ -1,4 +1,5 @@
-﻿using rankingEsport.Server.Interfaces;
+﻿using rankingEsport.Server.Domains;
+using rankingEsport.Server.Interfaces;
 using rankingEsport.Server.Persistences;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace rankingEsport.Server.Services
 {
@@ -45,12 +47,9 @@ namespace rankingEsport.Server.Services
             get { return totalpoint; }
             set { totalpoint = value; OnPropertyChanged(); }
             }
-        private DateTime date;
-
-        public DateTime Date
+        public void AddRanking() 
         {
-            get { return date; }
-            set { date = value; OnPropertyChanged(); }
+            new RankEntity { Rank = this.rank , Team = this.team , WinRate = this.winrate , TotalPoint = this.totalpoint };
         }
         void IRanking.FilterDate()
         {
@@ -93,6 +92,7 @@ namespace rankingEsport.Server.Services
         {
             throw new NotImplementedException(); // classer en fonction du rang de l'équipe
         }
+        public ICommand AddNewRanking { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

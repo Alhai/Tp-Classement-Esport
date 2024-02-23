@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ViewModels="clr-namespace:rankingEsport.ViewModels;assembly=rankingEsport"
+             xmlns:ViewModels="clr-namespace:rankingEsport.Client.ViewModels"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui" 
              x:Class="rankingEsport.Pages.RankingPage"
              xmlns:local="clr-namespace:rankingEsport"
              Title="RankingPage">
-    <!--<ContentPage.BindingContext>
-        <ViewModels:PlayerViewModel/>
-    </ContentPage.BindingContext>-->
+    <ContentPage.BindingContext>
+        <ViewModels:RankingViewModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout Spacing="10" Padding="10" VerticalOptions="Start">
+        <VerticalStackLayout Spacing="50" Padding="10" VerticalOptions="Start">
             <Label Text="Complexe E-sport" FontSize="Large" HorizontalOptions="Center" TextColor="Blue" />
             <Label Text="Formulaire de Classement"  FontSize="Large" HorizontalOptions="Start" />
-            <!--<ListView x:Name="" ItemsSource="{Binding}" />-->
-            <Grid BackgroundColor="LightGray" Padding="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Text="Rang" Grid.Column="0" HorizontalOptions="Start" TextColor="Black" />
-                <Label Text="Joueurs/Equipes" Grid.Column="1" HorizontalOptions="Start" TextColor="Black" />
-                <Label Text="Taux de victoire" Grid.Column="2" HorizontalOptions="Start" TextColor="Black" />
-                <Label Text="Points Totaux" Grid.Column="3" HorizontalOptions="Start" TextColor="Black" />
-            </Grid>
-            <ListView x:Name="FilteredDate" Grid.Column="0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Text="{Binding }" Grid.Column="0"/>
-                <Label Text="{Binding}" Grid.Column="1"/>
-                <Label Text="{Binding}" Grid.Column="2"/>
-                <Label Text="{Binding}" Grid.Column="3"/>
-            </Grid>
-            
+            <StackLayout Padding="20" Spacing="20">
+                <Picker Title="Rang" ItemsSource="{Binding RanksList}" SelectedItem="{Binding Rank}"></Picker>
+            </StackLayout>
+            <StackLayout Padding="20" Spacing="20">
+                <Label Text="Nom de l'équipe" HorizontalOptions="Start"/>
+                <Entry Text="{Binding Team}" />
+            </StackLayout>
+            <StackLayout Padding="20" Spacing="20">
+                <Picker Title="Nombres de Victoire" ItemsSource="{Binding VictoryList}" SelectedItem="{Binding WinRate}"></Picker>
+            </StackLayout>
+            <StackLayout Padding="20" Spacing="20">
+                <Label Text="Total de Points" HorizontalOptions="Start"/>
+                <Entry Text="{Binding TotalPoint}" />
+            </StackLayout>
+            <Button Text="Ajouter" Command="{Binding}" />
+            <StackLayout Orientation="Horizontal" Spacing="50">
+                <telerik:RadDataGrid x:Name="RankingList" ItemsSource="{Binding RanksList}" AutoGenerateColumns="False">
+                    <telerik:RadDataGrid.Columns>
+                        <telerik:DataGridTextColumn PropertyName="Rank" HeaderText="Rang" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="Teams" HeaderText="Equipe/Joueur" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="WinRate" HeaderText="Victoire" SizeMode="Fixed"/>
+                        <telerik:DataGridTextColumn PropertyName="TotalPoint" HeaderText="Points Total" SizeMode="Fixed"/>
+                    </telerik:RadDataGrid.Columns>
+                </telerik:RadDataGrid>
+            </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

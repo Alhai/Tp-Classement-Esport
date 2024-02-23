@@ -14,5 +14,6 @@ namespace rankingEsport.Server.Interfaces
         void FilterGame();
         void FilterDate();
         void FilterVictory();
+        void AddRanking();
     }
 }
