@@ -27,7 +27,7 @@
                 <Label Text="Total de Points" HorizontalOptions="Start"/>
                 <Entry Text="{Binding TotalPoint}" />
             </StackLayout>
-            <Button Text="Ajouter" Command="{Binding}" />
+            <Button Text="Ajouter" Command="{Binding }" />
             <StackLayout Orientation="Horizontal" Spacing="50">
                 <telerik:RadDataGrid x:Name="RankingList" ItemsSource="{Binding RanksList}" AutoGenerateColumns="False">
                     <telerik:RadDataGrid.Columns>

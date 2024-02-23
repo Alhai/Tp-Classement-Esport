@@ -14,83 +14,57 @@ namespace rankingEsport.Server.Services
 {
     public class RankingService : IRanking
     {
-        private readonly RankingPersistence RankingPersistence;
+        private readonly RankingPersistence RankingPersistence;//Lien vers la persistence de Ranking
 
-        public RankingService(RankingPersistence RankingPersistence)
+        public RankingService(RankingPersistence RankingPersistence)//injection d'une dépendance vers le service de persistance des classements dans la classe RankingService.
         {
             this.RankingPersistence = RankingPersistence;
         }
 
         private int rank;
-        public int Rank
+        public int Rank //appel du type int Rank
         {
             get { return rank; }
             set { rank = value; OnPropertyChanged(); }
         }
         private string team;
-        public string Team
+        public string Team //appel du type string Team
         {
             get { return team; }
             set { team = value; OnPropertyChanged(); }
         }
 
         private int winrate;
-        public int WinRate
+        public int WinRate //appel du type int WinRate
         {
             get { return winrate; }
             set { winrate = value; OnPropertyChanged(); }
         }
 
         private int totalpoint;
-        public int TotalPoint
+        public int TotalPoint // appel du type int TotalPoint
         {
             get { return totalpoint; }
             set { totalpoint = value; OnPropertyChanged(); }
             }
-        public void AddRanking() 
+        public void AddRanking() // méthode dd'ajout d'un rang avec ces différents paramètre
         {
             new RankEntity { Rank = this.rank , Team = this.team , WinRate = this.winrate , TotalPoint = this.totalpoint };
         }
         void IRanking.FilterDate()
         {
-            //var sortedTeams = team.OrderBy(team => team.Date());
-
-            /*foreach (var team in sortedTeams)
-            {
-                Console.WriteLine(team.Date());
-            }
-            /*
-             * classer en fonction de la date
-             * récupérer la date d'affichage des résultats de l'équipe
-             * en fonction de ces résultats classer ordre croissant dans le tableau
-             */
+            throw new NotImplementedException();
         }
 
         void IRanking.FilterGame()
         {
-            //throw new NotImplementedException(); classer en fonction de résultat de jeu
+            throw new NotImplementedException(); 
            
         }
 
         void IRanking.FilterVictory()
         {
-            /*var victory = winrate.OrderByDescending(winrate => winrate);
-            throw new NotImplementedException(); // classer en fonction du nombre de victoire
-            /*
-            * récupérer les taux de victoires des équipes 
-            * classer en ordre décroissant
-            */
-        }
-
-        void IRanking.RankingPlayers()
-        {
-            throw new NotImplementedException(); 
-            // classer en fonction du rang du joueurs
-        }
-
-        void IRanking.RankingTeams()
-        {
-            throw new NotImplementedException(); // classer en fonction du rang de l'équipe
+            throw new NotImplementedException();
         }
         public ICommand AddNewRanking { get; private set; }
 

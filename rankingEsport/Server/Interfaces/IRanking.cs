@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace rankingEsport.Server.Interfaces
 {
-    internal interface IRanking
+    interface IRanking //création de l'interface IRanking
     {
-        void RankingPlayers();
-
-        void RankingTeams();
-        void FilterGame();
-        void FilterDate();
-        void FilterVictory();
-        void AddRanking();
+        void FilterGame(); // méthode de filtrage en fonction du jeu
+        void FilterDate(); // méthode de filtrage en fonction de la date
+        void FilterVictory(); // méthode de filtrage en fonction du nombre de victoire
+        void AddRanking(); //méthode d'ajout d'un rang
     }
 }
